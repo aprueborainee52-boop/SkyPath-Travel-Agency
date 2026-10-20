@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SkyPath Travel Agency</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='8'%20fill='%23115e59'/%3E%3Cg%20transform='translate%282.4%202.4%29%20scale%28.85%29'%3E%3Cpath%20d='M16%205l2%209%209%204v2l-9-2-1%206%203%202v1l-4-1-4%201v-1l3-2-1-6-9%202v-2l9-4z'%20fill='%23fff'/%3E%3C/g%3E%3Crect%20x='9'%20y='26.6'%20width='14'%20height='2.2'%20rx='1.1'%20fill='%23f97316'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#115e59">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#115e59;--cyan:#0f766e;--or:#f97316;--bg:#f8fafc;--card:#fff;--ink:#0f2a3a;--mute:#64748b;--line:#e2e8f0;--tint:#f0fdfa;--gold:#facc15;--gray:#cbd5e1;--bzbg:#fefce8;--bzink:#a16207;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1a22;--card:#12262f;--ink:#e6f2f5;--mute:#93a9b3;--line:#24404b;--tint:#0d3a37;--gray:#3a505a;--bzbg:#2f2a0f;--bzink:#fde047}}
+:root[data-theme="dark"]{--bg:#0b1a22;--card:#12262f;--ink:#e6f2f5;--mute:#93a9b3;--line:#24404b;--tint:#0d3a37;--gray:#3a505a;--bzbg:#2f2a0f;--bzink:#fde047}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:#000;font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);display:flex;justify-content:center;min-height:100vh}
+h1,h2,h3,.f{font-family:'Outfit','DM Sans',system-ui,sans-serif}
+#app{width:100%;max-width:1600px;background:var(--bg);min-height:100vh}
+button{font:inherit;cursor:pointer;border:0}
+svg{flex:none}
+.hero{height:410px;position:relative;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:0 60px 50px;background:linear-gradient(180deg,#0b3b38 0%,#115e59 55%,#f97316 135%);overflow:hidden}
+.hero .cl{position:absolute;bottom:-40px;left:-5%;width:110%;height:170px;background:radial-gradient(ellipse at 20% 100%,#ffffff40 0,transparent 60%),radial-gradient(ellipse at 70% 100%,#ffffff2a 0,transparent 55%)}
+.hero>*{position:relative}.hero h1{font-size:64px;margin:0 0 10px;letter-spacing:-1.5px}.hero p{font-size:26px;margin:0}
+.lcard{background:var(--card);margin-top:-30px;border-radius:56px 56px 0 0;padding:56px 40px 60px;text-align:center;position:relative}
+.badge{display:inline-flex;gap:8px;align-items:center;background:var(--tint);color:var(--teal);font-weight:700;padding:10px 20px;border-radius:99px;font-size:17px}
+.lcard h2{font-size:52px;margin:18px 0 12px}.lcard p{color:var(--mute);font-size:21px;max-width:1300px;margin:0 auto 34px}
+.btn{padding:22px 44px;border-radius:16px;font-size:22px;font-weight:700;color:#fff;font-family:'Outfit',sans-serif;display:inline-flex;gap:12px;align-items:center;justify-content:center}
+.or{background:var(--or);box-shadow:0 10px 24px #f9731644}.cy{background:var(--cyan);box-shadow:0 8px 20px #0f766e33}
+.gh{background:var(--card);color:var(--mute);border:1px solid var(--line)}
+.btn:hover{filter:brightness(1.06)}
+.kid{margin-top:30px;color:var(--mute);display:flex;gap:10px;align-items:center;justify-content:center}.kid i{width:10px;height:10px;border-radius:50%;background:#0d9488}
+header{background:var(--teal);color:#fff;padding:28px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.logo{font-family:'Outfit',sans-serif;font-size:30px;font-weight:700;display:flex;gap:12px;align-items:center}
+header small{display:block;font-size:17px;font-weight:400;margin-top:4px;opacity:.9}
+.steps{display:flex;gap:14px;flex-wrap:wrap}
+.pill{display:flex;gap:10px;align-items:center;padding:10px 16px;border-radius:99px;background:#ffffff1f;color:#fff;font-weight:500;font-size:17px}
+.pill b{width:26px;height:26px;border-radius:50%;background:#ffffff33;display:grid;place-items:center;font-size:14px}
+.pill.on{background:var(--or);font-weight:700}.pill.on b{background:#ffffff40}
+.pill.dn{background:#0d9488aa;cursor:pointer}.pill.dn b{background:var(--cyan)}
+.sub{background:#0f5652;color:#fff;padding:20px 60px;display:flex;justify-content:space-between;border-top:1px solid #ffffff22;font-size:19px;flex-wrap:wrap;gap:8px}
+main{padding:44px 60px 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px}
+.lbl{font-size:15px;font-weight:700;color:var(--mute);text-transform:uppercase;letter-spacing:.3px;margin-bottom:8px;display:block}
+.route{display:grid;grid-template-columns:1fr 1fr;gap:30px;position:relative}
+.sw{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:var(--tint);color:var(--cyan);display:grid;place-items:center;border:4px solid var(--bg);z-index:2}
+.ap{display:flex;align-items:center;gap:14px}.ap .c{font-family:'Outfit';font-size:46px;font-weight:700;color:var(--teal)}
+select,input{font:inherit;color:var(--ink);background:transparent;border:0;outline:0;width:100%}
+.ap select{font-size:20px;flex:1}
+select option{color:#000}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;margin-top:30px;align-items:start}
+.dt{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:600}.dt input{font-size:22px;font-weight:600}
+.day{margin-left:auto;color:var(--cyan);font-size:18px;white-space:nowrap}
+.tint{background:var(--tint);border-color:#99f6e4}
+.tg{width:58px;height:32px;border-radius:99px;background:var(--gray);position:relative;cursor:pointer;flex:none}.tg i{position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.2s}.tg.on{background:var(--cyan)}.tg.on i{left:30px}
+.cnt{display:flex;align-items:center;gap:16px;font-size:26px;font-weight:700;font-family:'Outfit'}
+.cnt button{width:44px;height:44px;border-radius:50%;background:var(--tint);color:var(--cyan);font-size:24px;font-weight:700}
+.ctr{text-align:center;margin-top:44px}
+.fl{display:grid;grid-template-columns:170px 1fr 1fr 1.3fr auto;gap:20px;align-items:center;margin-bottom:16px;cursor:pointer;transition:.15s}
+.fl:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.fl .t{font-family:'Outfit';font-size:30px;font-weight:700}.fl .m{color:var(--mute);font-size:16px}.pr{font-family:'Outfit';font-size:30px;font-weight:700;color:var(--or)}
+.seatw{display:grid;grid-template-columns:1.1fr 1fr;gap:40px}
+.map{display:grid;grid-template-columns:repeat(7,50px);gap:15px 20px;justify-content:center;margin-top:20px;align-items:center;text-align:center}
+.map .h{font-weight:700;color:var(--mute)}.map .r{font-size:14px;font-weight:700;color:var(--mute)}
+.s{width:40px;height:40px;border-radius:8px;font-size:14px;border:2px solid #5eead4;background:var(--tint);color:#0f766e;font-weight:700}
+.s.p{border-color:var(--or);background:#fff7ed;color:#c2410c}.s.bz{border-color:#eab308;background:var(--bzbg);color:var(--bzink)}.s.lk{opacity:.28;cursor:not-allowed}.s.ph{visibility:hidden;border:0}.s.u{background:var(--gray);border-color:#94a3b8;color:#475569;cursor:not-allowed}.s.sel{background:var(--or);border-color:var(--or);color:#fff}
+.lg{display:flex;flex-wrap:wrap;gap:16px 28px;margin-top:18px}.lg span{display:flex;gap:10px;align-items:center}.lg i{width:26px;height:26px;border-radius:6px;border:2px solid}
+.pass{display:flex;justify-content:space-between;align-items:center;background:var(--tint);border-radius:16px;padding:18px 22px;margin-top:16px}.pass .tag{background:var(--or);color:#fff;font-family:'Outfit';font-size:28px;font-weight:700;padding:10px 18px;border-radius:12px}
+.acts{display:flex;justify-content:space-between;gap:20px;margin-top:24px}
+.acts .btn{padding:20px 34px;font-size:20px}
+.two{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start}
+.fld{margin-bottom:20px}.inp{border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:16px 18px;font-size:19px}
+.inp.er{border-color:#c2410c}.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}.em{color:#c2410c;font-size:14px;margin-top:4px}
+.bag{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+.op{border:2px solid var(--line);background:var(--bg);border-radius:14px;padding:18px;text-align:center;color:var(--ink)}.op b{font-family:'Outfit';font-size:24px;display:block}.op span{color:var(--mute)}
+.op.on{border-color:var(--cyan);background:var(--tint)}.op.on span{color:var(--cyan);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:12px}.chip{border:1px solid var(--line);background:var(--bg);padding:12px 22px;border-radius:10px;font-size:17px;color:var(--ink)}.chip.on{border-color:var(--cyan);background:var(--tint);color:var(--teal);font-weight:700}
+h3{font-size:26px;margin:0 0 20px}
+.ln{display:flex;justify-content:space-between;font-size:20px;padding:10px 0;color:var(--mute)}.ln.b{color:var(--ink);font-weight:700;border-top:1px solid var(--line);margin-top:8px;padding-top:18px}
+.ln.d{background:var(--tint);color:var(--teal);font-weight:700;padding:12px 10px;border-radius:8px}
+.tot{background:var(--cyan);color:#fff;border-radius:14px;padding:22px 24px;display:flex;justify-content:space-between;align-items:center;margin-top:20px;font-family:'Outfit';font-size:28px;font-weight:600}.tot b{font-size:38px}
+.rc div{font-size:19px;padding:9px 0;display:flex;gap:12px;align-items:center}
+.done{text-align:center;max-width:1000px;margin:0 auto}
+.ring{width:126px;height:126px;border-radius:50%;border:5px solid var(--cyan);background:var(--tint);display:grid;place-items:center;margin:0 auto 30px;color:var(--cyan)}
+.pend{display:inline-block;background:var(--gold);color:#422006;font-weight:700;padding:10px 22px;border-radius:99px}
+.done h2{font-size:52px;margin:20px 0 6px}.refn{font-family:'Outfit';font-size:34px;font-weight:700;color:var(--or)}
+.note{border:2px solid var(--cyan);background:var(--tint);border-radius:16px;padding:24px 28px;text-align:left;margin:34px 0;display:flex;gap:18px}.note h4{font-family:'Outfit';font-size:24px;margin:0 0 6px;color:var(--teal)}.note p{margin:0;font-size:19px;color:var(--ink)}
+.sum{display:grid;grid-template-columns:repeat(5,auto);justify-content:space-between;gap:16px;text-align:left;overflow-x:auto}.sum small{color:var(--mute);text-transform:uppercase;display:block;margin-bottom:6px}.sum b{font-size:21px}
+.tk{max-width:880px;margin:0 auto;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px #0002;background:var(--card)}
+.tk .top{background:var(--cyan);color:#fff;padding:26px 32px;display:flex;justify-content:space-between;align-items:center;font-family:'Outfit';font-size:26px;font-weight:700}
+.tk .ok{background:#ccfbf1;color:var(--teal);font-size:16px;padding:10px 18px;border-radius:99px}
+.tk .bd{padding:34px 40px}.rt{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px}.rt .c{font-family:'Outfit';font-size:66px;font-weight:700;color:var(--teal);line-height:1}
+.rt small{color:var(--mute);font-size:18px;font-weight:700}.dash{border-top:2px dashed var(--line);margin:26px 0}
+.inf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}.inf small{display:block;color:var(--mute);text-transform:uppercase;font-size:14px;margin-bottom:6px}.inf b{font-size:21px}
+.qr{display:flex;align-items:center;gap:26px;justify-content:space-between;flex-wrap:wrap}.qr svg{background:#fff;padding:10px;border-radius:10px;border:1px solid var(--line)}
+.eb{display:flex;gap:20px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+
+.fl.biz{border:2px solid #eab308;background:linear-gradient(90deg,var(--bzbg),var(--card) 75%)}
+.cls{display:inline-block;font:700 12px 'DM Sans',sans-serif;letter-spacing:.7px;padding:4px 11px;border-radius:99px;margin-top:6px}
+.cls.e{background:var(--tint);color:var(--teal);border:1px solid #5eead4}.cls.b{background:var(--gold);color:#422006}
+.dt .dtx{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 12px;min-width:0}
+.dsr{display:flex;gap:8px;margin-top:12px}.dsr select{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 6px;font-size:17px;flex:1;min-width:0;width:auto}
+.dsr select:disabled,.dt .dtx:disabled{opacity:.5}
+.smw{overflow-x:auto;padding:6px 2px}
+.smap{display:flex;flex-direction:column;gap:7px;align-items:center;width:max-content;min-width:100%}
+.srow{display:flex;align-items:center}.grp{display:flex;gap:5px}
+.ai{width:34px;text-align:center;font-size:12px;font-weight:700;color:var(--mute)}
+.s0{width:40px;text-align:center;font-weight:700;color:var(--mute)}
+.dv{align-self:stretch;text-align:center;font-size:12px;font-weight:700;letter-spacing:.8px;color:var(--mute);border-top:1px dashed var(--line);padding-top:6px;margin-top:8px}.dv.g{color:var(--bzink);border-color:#eab308}
+.banner{border-radius:12px;padding:12px 16px;font-size:16px;margin-top:16px;background:var(--tint);color:var(--teal)}.banner.g{background:var(--bzbg);color:var(--bzink);border:1px solid #eab308}
+.sm{padding:12px 18px!important;font-size:16px!important;border-radius:12px!important}
+.rd{background:#c2410c;box-shadow:0 8px 20px #c2410c33}
+.st{display:inline-block;padding:4px 12px;border-radius:99px;font-weight:700;font-size:14px;background:#e2e8f0;color:#334155}
+.st.Pending{background:#fef9c3;color:#713f12}.st.Confirmed{background:#ccfbf1;color:#115e59}.st.RefundPending{background:#ffedd5;color:#9a3412}.st.Refunded,.st.Cancelled{background:#e2e8f0;color:#475569}
+.tbl{width:100%;border-collapse:collapse}.tbl th{text-align:left;font-size:13px;text-transform:uppercase;color:var(--mute);padding:10px}.tbl td{padding:14px 10px;border-top:1px solid var(--line);font-size:17px;vertical-align:middle}
+.pol{display:flex;justify-content:space-between;padding:12px 14px;border-radius:10px;font-size:18px;color:var(--mute)}.pol.on{background:var(--tint);color:var(--teal);font-weight:700}
+.mrow{display:flex;gap:14px;flex-wrap:wrap}.mrow .inp{flex:1;min-width:220px}
+.noprint{}
+.cnt{flex-wrap:wrap}.cnt .paxin{width:64px;text-align:center;font:700 26px Outfit,sans-serif;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:6px}
+.fld .em{min-height:20px}
+@media(max-width:1000px){main,header,.sub{padding-left:22px;padding-right:22px}.route,.row3,.seatw,.two,.fl{grid-template-columns:1fr}.sw{display:none}.hero{padding:0 22px 40px}.hero h1{font-size:40px}.lcard h2{font-size:34px}.sum{grid-template-columns:1fr 1fr}.s,.s0{width:30px;height:30px;font-size:11px}.grp{gap:3px}.ai{width:22px}.dsr{flex-wrap:wrap}}
+@media print{body{background:#fff}header,.eb,.sub,.noprint{display:none!important}main{padding:0}.tk{break-inside:avoid;box-shadow:none;border:1px solid #ccc}}
+
+</style></head><body><div id="app"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// ================= PASTE YOUR SUPABASE VALUES HERE (the only edit you need) =================
+const SB_URL='https://dndjslviylogxaoyqjnn.supabase.co';  // same project as the Admin portal
+const SB_KEY='sb_publishable__w-0JMHbinbq8ntYE4ielA_ToITz7vG';
+// ============================================================================================
+const DB=(()=>{try{if(typeof sb!=='undefined'&&sb)return sb}catch(e){}try{if(!SB_URL.startsWith('YOUR_')&&window.supabase){try{localStorage.removeItem('sb-dndjslviylogxaoyqjnn-auth-token')}catch(e){}return window.supabase.createClient(SB_URL,SB_KEY,{auth:{storageKey:'skypath-customer-auth'}})}}catch(e){}return null})();
+const HAS_SB=!!DB;
+const AP={MNL:'Manila, Ninoy Aquino Intl',CEB:'Cebu, Mactan-Cebu Intl',DVO:'Davao, Francisco Bangoy Intl',ILO:'Iloilo Intl',CRK:'Clark Intl',BCD:'Bacolod-Silay Intl',TAC:'Tacloban, Daniel Z. Romualdez',PPS:'Puerto Princesa Intl'};
+const CITY=c=>AP[c].split(',')[0].replace(' Intl','');
+const BAG=[{kg:0,p:0},{kg:20,p:450},{kg:25,p:650},{kg:30,p:900}];// index 0 = no extra baggage (free)
+const bagLbl=i=>BAG[i].kg?BAG[i].kg+'kg':'None';
+const MEALS={Standard:250,Vegetarian:250,Halal:250,None:0};
+const DISC={none:['No Discount',0],senior:['Senior Citizen Discount Applied (20% off base fare)',.2],pwd:['PWD Discount Applied (20% off base fare)',.2],student:['Student Discount Applied (10% off base fare)',.1]};
+const DN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const pad=n=>String(n).padStart(2,'0');
+const isoD=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const addD=n=>{const d=new Date();d.setDate(d.getDate()+n);return isoD(d)};
+const MO=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const REFUND=[{h:168,p:.9,l:'7 days or more before departure'},{h:72,p:.75,l:'3 to 7 days before departure'},{h:24,p:.5,l:'1 to 3 days before departure'},{h:0,p:0,l:'Less than 24 hours before departure'}];
+const FLEET=[
+{car:'Cebu Pacific',cc:'5J',m:'Airbus A320',cap:180,lbl:'180',lay:[3,3],biz:6},
+{car:'Cebu Pacific',cc:'5J',m:'Airbus A320neo',cap:188,lbl:'188–194',lay:[3,3],biz:6},
+{car:'Cebu Pacific',cc:'5J',m:'Airbus A321-200',cap:230,lbl:'230',lay:[3,3],biz:6},
+{car:'Cebu Pacific',cc:'5J',m:'Airbus A321neo',cap:236,lbl:'236',lay:[3,3],biz:6},
+{car:'Cebu Pacific',cc:'5J',m:'Airbus A330-900neo (High-Density)',cap:459,lbl:'459–460',lay:[3,3,3],biz:6},
+{car:'Cebu Pacific',cc:'5J',m:'ATR 72-600 (Turboprop)',cap:78,lbl:'78',lay:[2,2],biz:6},
+{car:'AirAsia',cc:'Z2',m:'Airbus A320',cap:180,lbl:'180',lay:[3,3],biz:6},
+{car:'AirAsia',cc:'Z2',m:'Airbus A321neo',cap:236,lbl:'236',lay:[3,3],biz:6},
+{car:'AirAsia X',cc:'D7',m:'Airbus A330 (Long-haul)',cap:365,lbl:'~365',lay:[2,4,2],biz:6}];
+const LET='ABCDEFGHIJ';
+const hsh=s=>{let h=7;for(const c of String(s))h=(h*31+c.charCodeAt(0))>>>0;return h};
+const BIZ_SEATS=24,BIZLAY=[2,2];
+const perRow=a=>a.lay.reduce((x,y)=>x+y,0);
+const rowsOf=a=>a.biz+Math.ceil((a.cap-BIZ_SEATS)/perRow(a));
+const layOf=(a,r)=>r<=a.biz?BIZLAY:a.lay;
+const cntOf=(a,r)=>r<=a.biz?4:Math.min(perRow(a),a.cap-BIZ_SEATS-(r-a.biz-1)*perRow(a));
+const exitRow=a=>Math.max(a.biz+2,Math.round(rowsOf(a)*.45));
+const rowN=c=>parseInt(c,10),colL=c=>c.replace(/^\d+/,'');
+const seatCls=(c,f)=>{const r=rowN(c),a=f.ac;return r<=a.biz?'b':(r==a.biz+1||r==exitRow(a))?'p':'s'};
+const isPrem=(c,f)=>!!c&&seatCls(c,f)=='p';
+const seatType=(c,f)=>{const li=LET.indexOf(colL(c)),g=layOf(f.ac,rowN(c));let a=0;for(let gi=0;gi<g.length;gi++){const s=a,e=a+g[gi]-1;a+=g[gi];if(li>=s&&li<=e){if((gi==0&&li==s)||(gi==g.length-1&&li==e))return'Window';return(li==s||li==e)?'Aisle':'Middle'}}return'Middle'};
+let DB_FLIGHTS=[];
+let S_UPLOADING=false;
+const DEAD=['CANCELLED','REFUND_PENDING','REFUNDED','Cancelled','Refund Pending','Refunded'];
+const newP=()=>({name:'',gender:'Female',dob:'',disc:'none',bag:0,meal:'Standard'});
+const nearestAircraft=(airline,seats)=>{
+  const a=FLEET.filter(x=>x.car.toLowerCase()==String(airline||'').toLowerCase() || String(airline||'').toLowerCase().includes(x.car.toLowerCase()) || x.car.toLowerCase().includes(String(airline||'').toLowerCase()));
+  return (a.length?a:FLEET).slice().sort((x,y)=>Math.abs(x.cap-seats)-Math.abs(y.cap-seats))[0];
+};
+const mapFlight=f=>({
+  id:f.id,no:f.flight_number,t:String(f.departure_time||'').slice(0,5),
+  arr:String(f.arrival_time||'').slice(0,5),cls:f.cabin_class=='BUSINESS'?'Business':'Economy',
+  price:Number(f.base_fare||0)||base(f.origin_code,f.destination_code),
+  ac:nearestAircraft(f.airline,Number(f.total_seats)||180),
+  airline:f.airline,origin:f.origin_code,destination:f.destination_code,
+  available:Number(f.available_seats)||0,total:Number(f.total_seats)||0
+});
+const flights=()=>DB_FLIGHTS.filter(f=>f.origin==S.o&&f.destination==S.d);
+async function loadFlights(){
+  if(!HAS_SB){S.msg='Supabase is not HAS_SB. Check the Admin js/supabase-config.js file.';return false}
+  const {data,error}=await DB.from('flights').select('*').eq('status','ACTIVE').order('departure_time');
+  if(error){console.error(error);S.msg='Unable to load flights from Supabase: '+error.message;return false}
+  DB_FLIGHTS=(data||[]).map(mapFlight);return true;
+}
+async function loadTakenSeats(flight){
+  const {data,error}=await DB.rpc('get_public_flight_seats',{p_flight_id:flight.id,p_departure_date:S.dep});
+  if(error){console.error(error);S.takenSeats=[];return}
+  S.takenSeats=(data||[]).flatMap(x=>String(x.seat_number||'').split(',').map(v=>v.trim()).filter(Boolean));
+}
+const getBK=r=>S.localBooking && S.localBooking.ref==r ? S.localBooking : null;
+const saveBK=()=>{};
+const bookedSeat=c=>S.takenSeats.includes(c);
+const taken=c=>S.takenSeats.includes(c)||hsh(S.flight.no+S.dep+c)%100<12;
+const emptyAu=()=>({name:'',email:'',phone:'',pw:'',pw2:'',lpw:'',code:'',np:'',np2:''});
+const S={pay:null,showP:false,user:null,after:0,au:emptyAu(),note:'',mine:[],vEmail:'',vType:'signup',resendAt:0,showA:false,busy:false,showPw:false,step:0,o:'MNL',d:'CEB',dep:addD(21),ret:addD(25),rt:true,pax:1,flight:null,seats:[],sec:0,ref:'',err:{},msg:'',ai:0,P:[newP()],C:{phone:'',email:''},takenSeats:[],paxWarn:'',tc:{},showAll:false,back:0,localBooking:null,view:null,admin:false,cref:'',cname:'',cb:null,cmsg:'',cok:false,cdone:''};
+const $=s=>document.getElementById(s);
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const peso=n=>'₱'+n.toLocaleString('en-PH',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fd=s=>{const d=new Date(s+'T00:00');return isNaN(d)?'—':d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})};
+const dow=s=>{const d=new Date(s+'T00:00');return isNaN(d)?'':DN[d.getDay()]};
+const I={
+plane:'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>',
+chk:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
+arr:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+sw:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"/></svg>',
+srch:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>',
+clk:'<svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+inf:'<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#115e59" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>'};
+const NAMES=['Search','Select','Seats','Passengers','Fare Summary','Submit'];
+const SUB=['','Search Flights','Select Flight','Select Seats','Passenger Details','Review & Confirm','Submitted'];
+const SEQ=[0,1,2,4,5,6];// pill index -> step number mapping below
+
+function header(){
+ if(S.step>=7)return `<header><div class="logo">${I.plane}<div>SkyPath<small>${['','','','','','','','Official Receipt','Cancel / Refund','Log In','Create Account','Verify Email','Reset Password','Reset Password','My Bookings','Online Payment'][S.step]}</small></div></div><div style="display:flex;gap:12px">${S.user&&S.step!=14?`<button class="pill" style="font-size:17px" onclick="go(14)">My Bookings</button>`:''}<button class="pill" style="font-size:17px" onclick="reset()">Home</button></div></header>`;
+ const pills=NAMES.map((n,i)=>{const k=i+1;const c=k<S.step?'dn':k==S.step?'on':'';
+  return `<div class="pill ${c}" ${c=='dn'&&S.step<6?`onclick="go(${k})"`:''}><b>${k<S.step?I.chk:k}</b>${n}</div>`}).join('');
+ return `<header><div class="logo">${I.plane}<div>SkyPath<small>Step ${S.step} of 6 : ${SUB[S.step]}</small></div></div><div class="steps">${pills}</div>${S.user?`<button class="pill" style="font-size:17px" onclick="go(14)">My Bookings</button>`:''}</header>`;
+}
+async function go(n,note=''){
+  if([1,2,3,4,5,8,14,15].includes(n)&&!S.user){S.after=n;n=9}
+  if(n===8)S.back=S.step;
+  S.step=n;S.msg='';S.note=note;S.showA=false;window.scrollTo(0,0);
+  if(n>=9&&n<=13)for(const k in S.tc)if(k[0]=='a')delete S.tc[k];
+  if(n===4){const m=(S.user&&S.user.user_metadata)||{};if(!S.P[0].name.trim())S.P[0].name=m.full_name||'';if(!S.C.phone)S.C.phone=m.phone||'';if(!S.C.email)S.C.email=(S.user&&S.user.email)||''}
+  if(n===2){viewLoading('Loading available flights…');await loadFlights()}
+  if(n===15)for(const k in S.tc)if(k[0]=='p')delete S.tc[k];
+  if(n===8||n===14||n===15){viewLoading('Loading your bookings…');await loadMine()}
+  render()
+}
+function viewLoading(m){$('app').innerHTML=`<main><div class="card" style="max-width:720px;margin:70px auto;text-align:center"><h2 class="f">${m}</h2><p style="color:var(--mute)">Connecting to SkyPath Supabase…</p></div></main>`}
+function digits11(el){el.value=el.value.replace(/\D/g,'').slice(0,11)}
+function reset(){Object.assign(S,{step:0,flight:null,seats:[],sec:0,ref:'',err:{},msg:'',pax:1,ai:0,P:[newP()],C:{phone:'',email:''},takenSeats:[],paxWarn:'',tc:{},showAll:false,back:0,localBooking:null,view:null,admin:false,cref:'',cname:'',cb:null,cmsg:'',cok:false,cdone:'',after:0,note:'',au:emptyAu(),showA:false,busy:false,showPw:false,pay:null});window.scrollTo(0,0);render()}
+
+function base(o,d){if(o+d=='MNLCEB'||o+d=='CEBMNL')return 2150;let s=0;for(const c of o+d)s+=c.charCodeAt(0);return 1400+(s%18)*100}
+function arrive(t){const[h,m]=t.split(':').map(Number);const x=h*60+m+85;const H=Math.floor(x/60)%24,M=x%60;return `${String(H%12||12).padStart(2,'0')}:${String(M).padStart(2,'0')} ${H<12?'AM':'PM'}`}
+function t12(t){const[h,m]=t.split(':').map(Number);return `${String(h%12||12).padStart(2,'0')}:${String(m).padStart(2,'0')} ${h<12?'AM':'PM'}`}
+function ensureP(){while(S.P.length<S.pax)S.P.push(newP());S.P.length=S.pax}
+function age(p,dep=S.dep){if(!p.dob)return null;const a=new Date(dep+'T00:00'),b=new Date(p.dob+'T00:00');let y=a.getFullYear()-b.getFullYear();if(a.getMonth()<b.getMonth()||(a.getMonth()==b.getMonth()&&a.getDate()<b.getDate()))y--;return y}
+const inf=(p,dep)=>{const a=age(p,dep);return a!==null&&a>=0&&a<2};
+function fare(b=S){let k=0;const L=b.P.map(p=>{const i=inf(p,b.dep),seat=i?null:(b.seats[k++]||null),base=i?0:b.flight.price,ss=seat&&isPrem(seat,b.flight)?500:0,bg=i?0:BAG[p.bag].p,ml=i?0:MEALS[p.meal],ds=Math.round(base*DISC[p.disc][1]);return{p,i,seat,base,ss,bg,ml,ds,tot:base+ss+bg+ml-ds}});const t=q=>L.reduce((a,x)=>a+x[q],0),sub=t('base')+t('ss')+t('bg')+t('ml');return{L,bs:t('base'),ss:t('ss'),bg:t('bg'),ml:t('ml'),ds:t('ds'),sub,tot:b.total_amount!=null?b.total_amount:sub-t('ds')}}
+function landing(){return `<div class="hero"><div class="cl"></div><svg style="position:absolute;right:12%;top:60px" width="520" height="150" viewBox="0 0 520 150"><path d="M20 90c60-30 190-45 330-40l60 8c40 4 55 20 10 32-90 22-260 30-400 0z" fill="#e8eef4"/><path d="M330 52 390 4l30 2-20 50z" fill="#f97316" opacity=".85"/><path d="M200 78 300 118l-50 6-80-30z" fill="#94a3b8"/></svg><h1 class="f">Your Journey Begins Here</h1><p>Providing smooth and effortless flight reservations worldwide.</p></div>
+<div class="lcard"><span class="badge">${I.plane.replace(/30/g,'20')} SKYPATH TRAVEL AGENCY</span><h2 class="f">Book your flight in minutes</h2><p>Create a free account, search available schedules, choose your favorite seat, and reserve your flight online.</p><div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">${S.user?`<button class="btn or" onclick="go(1)">Start Booking ${I.arr}</button><button class="btn gh" onclick="go(14)">My Bookings</button><button class="btn gh" onclick="go(8)">Cancel / Refund</button>`:`<button class="btn or" onclick="S.after=1;go(9)">Log In to Book ${I.arr}</button><button class="btn gh" onclick="S.after=1;go(10)">Create an Account</button>`}</div><div class="kid"><i></i>${S.user?`Signed in as <b>${esc((S.user.user_metadata&&S.user.user_metadata.full_name)||S.user.email)}</b> &nbsp;·&nbsp; <a style="cursor:pointer;text-decoration:underline" onclick="logout()">Log out</a>`:'Secure online booking · a verified account is required'}</div></div>`}
+
+function dateField(k,dis){const v=S[k]||'',[y,m,d]=v.split('-').map(Number),Y0=new Date().getFullYear(),yrs=[Y0,Y0+1,Y0+2];if(y&&!yrs.includes(y))yrs.push(y);
+ const dim=y&&m?new Date(y,m,0).getDate():31,o=(val,lab,cur)=>`<option value="${val}" ${val==cur?'selected':''}>${lab}</option>`,dd=dis?'disabled':'';
+ return `<div class="dt"><input class="dtx" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" ${dd} value="${y?pad(m)+'/'+pad(d)+'/'+y:''}" onchange="typeDate('${k}',this.value)" onkeydown="if(event.key==='Enter')this.blur()"><span class="day">${dis?'':dow(v)}</span></div>
+ <div class="dsr"><select ${dd} aria-label="Month" onchange="setPart('${k}','m',this.value)">${MO.map((n,i)=>o(i+1,n,m)).join('')}</select><select ${dd} aria-label="Day" onchange="setPart('${k}','d',this.value)">${Array.from({length:dim},(_,i)=>o(i+1,i+1,d)).join('')}</select><select ${dd} aria-label="Year" onchange="setPart('${k}','y',this.value)">${yrs.map(n=>o(n,n,y)).join('')}</select></div>`}
+function parseDate(s){s=s.trim();let m,y,mo,d;if(m=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/)){y=+m[1];mo=+m[2];d=+m[3]}else if(m=s.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})$/)){mo=+m[1];d=+m[2];y=+m[3];if(mo>12&&d<=12)[mo,d]=[d,mo]}else{if(!/\d{4}/.test(s))return null;const x=new Date(s);if(isNaN(x))return null;y=x.getFullYear();mo=x.getMonth()+1;d=x.getDate()}
+ const x=new Date(y,mo-1,d);if(x.getFullYear()!=y||x.getMonth()!=mo-1||x.getDate()!=d)return null;return `${y}-${pad(mo)}-${pad(d)}`}
+function setDate(k,iso){S[k]=iso;if(k=='dep'&&S.rt&&S.ret<iso)S.ret=iso;S.msg='';render()}
+function setPart(k,p,v){let[y,m,d]=(S[k]||S.dep).split('-').map(Number);v=+v;if(p=='m')m=v;if(p=='d')d=v;if(p=='y')y=v;d=Math.min(d,new Date(y,m,0).getDate());setDate(k,`${y}-${pad(m)}-${pad(d)}`)}
+function typeDate(k,s){const iso=parseDate(s);if(!iso){S.msg="Couldn't read that date. Type it as MM/DD/YYYY (for example 10/24/2026).";return render()}setDate(k,iso)}
+function searchWarn(){const w={};
+ if(S.o==S.d)w.route='Origin and destination must be different. Please choose another airport.';
+ if(!S.dep)w.dep='Please choose a departure date.';else if(S.dep<addD(0))w.dep='Departure date cannot be in the past.';
+ if(S.rt){if(!S.ret)w.ret='Please choose a return date.';else if(S.dep&&S.ret<S.dep)w.ret='Return date cannot be before the departure date.'}
+ if(S.paxWarn)w.pax=S.paxWarn;return w}
+function search(){const W=searchWarn(),wm=k=>W[k]?`<div class="em" style="font-size:16px;margin-top:10px">${W[k]}</div>`:'';
+ const opt=(v)=>Object.keys(AP).map(k=>`<option value="${k}" ${k==v?'selected':''}>${AP[k]}</option>`).join('');
+ const ap=(id,v,l)=>`<div class="card" style="${W.route?'border-color:#c2410c':''}"><span class="lbl">${l}</span><div class="ap"><span class="c">${v}</span><select id="${id}" onchange="S.${id}=this.value;S.msg='';render()">${opt(v)}</select></div></div>`;
+ return `<main><div style="margin-bottom:22px"><button class="btn gh sm" onclick="go(0)">← Back</button></div><div class="route">${ap('o',S.o,'From (Origin)')}<button class="sw" onclick="[S.o,S.d]=[S.d,S.o];S.msg='';render()" aria-label="Swap">${I.sw}</button>${ap('d',S.d,'To (Destination)')}</div>${wm('route')}
+ <div class="row3"><div class="card"><span class="lbl">Departure Date</span>${dateField('dep',false)}${wm('dep')}</div>
+ <div class="card ${S.rt?'tint':''}" style="${S.rt?'':'opacity:.7'}"><div style="display:flex;justify-content:space-between;align-items:center"><span class="lbl" style="color:var(--teal);margin:0">Return Date (Optional)</span><div class="tg ${S.rt?'on':''}" onclick="S.rt=!S.rt;render()"><i></i></div></div><div style="margin-top:12px">${dateField('ret',!S.rt)}</div>${S.rt?wm('ret'):''}</div>
+ <div class="card"><span class="lbl">Passengers</span><div class="cnt"><button onclick="pax(-1)">−</button><input id="paxin" class="paxin" type="text" inputmode="numeric" maxlength="2" value="${S.pax}" aria-label="Number of passengers" oninput="setPax(this.value,false)" onchange="setPax(this.value,true)" onkeydown="if(event.key==='Enter')this.blur()"><span id="paxlbl">Passenger${S.pax>1?'s':''}</span><button onclick="pax(1)">+</button></div><div id="paxw">${wm('pax')}</div></div></div>
+ <div class="ctr">${S.msg?`<div class="em" style="margin-bottom:12px;font-size:17px">${S.msg}</div>`:''}<button class="btn cy" style="width:500px;max-width:100%" onclick="doSearch()">${I.srch} Search Available Flights</button></div>
+ <p style="text-align:center;color:var(--mute);margin-top:70px;letter-spacing:1px;font-weight:700">OUR PARTNER CARRIERS</p><p style="text-align:center;color:var(--mute);margin:0;font-size:19px">Cebu Pacific · AirAsia</p></main>`}
+function pax(d){if(S.pax+d>9){S.paxWarn='Maximum of 9 passengers per booking.';return render()}S.paxWarn=S.pax+d<1?'At least 1 passenger is required.':'';S.pax=Math.max(1,S.pax+d);ensureP();S.seats=S.seats.slice(0,S.pax);render()}
+function paxLive(){const w=$('paxw'),l=$('paxlbl');if(w)w.innerHTML=S.paxWarn?`<div class="em" style="font-size:16px;margin-top:10px">${S.paxWarn}</div>`:'';if(l)l.textContent='Passenger'+(S.pax>1?'s':'')}
+function setPax(v,commit){v=String(v).replace(/\D/g,'');
+ if(v===''){S.paxWarn=commit?'':'Enter the number of passengers (1 to 9).';return commit?render():paxLive()}
+ let n=+v;if(n<1){S.paxWarn='At least 1 passenger is required.';n=commit?1:S.pax}else if(n>9){S.paxWarn='Maximum of 9 passengers per booking.'+(commit?' Set to 9.':'');n=commit?9:S.pax}else S.paxWarn='';
+ S.pax=n;ensureP();S.seats=S.seats.slice(0,S.pax);if(commit)render();else paxLive()}
+function doSearch(){const W=searchWarn();if(W.route||W.dep||W.ret){S.msg='Please fix the warnings above before searching.';return render()}S.msg='';go(2)}
+function select(){return `<div class="sub"><b>${S.o} → ${S.d}</b><span>${fd(S.dep)} · ${S.pax} passenger${S.pax>1?'s':''}</span></div><main><div class="lg" style="margin:0 0 20px"><span><i style="border-color:#5eead4;background:var(--tint)"></i>Economy flight</span><span><i style="border-color:#eab308;background:var(--gold)"></i>Business flight (gold)</span><span style="color:var(--mute)">Aircraft type and seat capacity are shown on every flight.</span></div>${flights().map((f,i)=>{const bz=f.cls=='Business';return `<div class="card fl ${bz?'biz':''}" onclick="pick(${i})"><div><div class="f" style="color:${bz?'var(--bzink)':'var(--teal)'};font-weight:700">${f.no}</div><span class="cls ${bz?'b':'e'}">${f.cls.toUpperCase()}</span></div><div><div class="t">${t12(f.t)}</div><div class="m">${CITY(S.o)} (${S.o})</div></div><div><div class="t">${t12(f.arr||arrive(f.t))}</div><div class="m">${CITY(S.d)} (${S.d})</div></div><div><div style="font-weight:700;font-size:18px">${f.ac.m}</div><div class="m">${f.ac.car} · ${bz?BIZ_SEATS+' Business seats (aircraft: '+f.ac.lbl+')':f.ac.lbl+' seats'}</div><div class="m">1h 25m · Non-stop</div></div><div style="text-align:right"><div class="pr" style="${bz?'color:var(--bzink)':''}">${peso(f.price)}</div><div class="m">per passenger</div></div></div>`}).join('')}<div class="acts"><button class="btn gh" onclick="go(1)">Back to Search</button><span></span></div></main>`}
+async function pick(i){
+  S.flight=flights()[i];S.seats=[];S.sec=0;S.msg='';
+  await loadTakenSeats(S.flight);go(3)
+}
+
+function seats(){const f=S.flight,ac=f.ac,R=rowsOf(ac),biz=f.cls=='Business',per=ac.lay.reduce((x,y)=>x+y,0);
+ const t3=Math.ceil(R/3),secs=[[1,t3],[t3+1,Math.min(R,2*t3)],[2*t3+1,R]],SN=['Front','Middle','Back'],ST=['FRONT OF AIRCRAFT (NOSE)','MIDDLE OF AIRCRAFT (WINGS & EXIT ROW)','BACK OF AIRCRAFT (TAIL)'];
+ const sec=S.sec=Math.min(S.sec||0,2),[r0,r1]=secs[sec];
+ const grp=lay=>{let s=0;return lay.map(n=>{const a=s;s+=n;return[a,n]})};
+ const cell=c=>{const k=seatCls(c,f),ok=biz?k=='b':k!='b',u=taken(c),sel=S.seats.includes(c);const cl=u?'u':!ok?'lk':sel?'sel':k=='b'?'bz':k=='p'?'p':'';
+  return `<button class="s ${cl}" aria-label="Seat ${c}" title="${c}" ${u||!ok?'disabled':`onclick="seat('${c}')"`}>${colL(c)}</button>`};
+ const hdr=lay=>`<div class="srow">`+grp(lay).map(([a,n],gi)=>(gi?'<div class="ai"></div>':'')+`<div class="grp">${Array.from({length:n},(_,j)=>`<span class="s0">${LET[a+j]}</span>`).join('')}</div>`).join('')+`</div>`;
+ let rh='';for(let r=r0;r<=r1;r++){const lay=layOf(ac,r),cnt=cntOf(ac,r);
+  if(r==1)rh+=`<div class="dv g">BUSINESS CABIN · ${BIZ_SEATS} SEATS · ROWS 1–${ac.biz}</div>`+hdr(lay);
+  else if(r==ac.biz+1)rh+='<div class="dv">ECONOMY CABIN</div>'+hdr(lay);
+  else if(r==r0)rh+=hdr(lay);
+  if(r==exitRow(ac)&&r!=r0)rh+='<div class="dv">EXIT ROW · EXTRA LEGROOM (+ ₱500)</div>';
+  rh+=`<div class="srow">`+grp(lay).map(([a,n],gi)=>(gi?`<div class="ai">${r}</div>`:'')+`<div class="grp">${Array.from({length:n},(_,j)=>a+j<cnt?cell(r+LET[a+j]):'<span class="s ph"></span>').join('')}</div>`).join('')+`</div>`}
+ const tabs=secs.map(([a,b],i)=>{const n=S.seats.filter(c=>rowN(c)>=a&&rowN(c)<=b).length;return `<button class="chip ${i==sec?'on':''}" onclick="S.sec=${i};render()">${SN[i]} · Rows ${a}–${b}${n?` (${n} selected)`:''}</button>`}).join('');
+ const sur=S.seats.filter(c=>isPrem(c,f)).length*500;
+ ensureP();const pl=Array.from({length:S.pax},(_,i)=>{const c=S.seats[i],n=S.P[i].name.trim();return `<div class="pass"><div><div class="lbl" style="margin:0">Passenger ${i+1}</div><b class="f" style="font-size:22px">${c?(n?esc(n):'Seat selected'):'Unassigned (To fill next)'}</b></div>${c?`<span class="tag">${c}</span>`:''}</div>`}).join('')+(S.pax>1?'<p style="color:var(--mute);margin:12px 0 0;font-size:15px">Infants under 2 travel free on a lap. Their seat is released once birthdates are entered.</p>':'');
+ return `<div class="sub"><span><b>FLIGHT: ${f.no}</b> &nbsp; ${CITY(S.o)} (${S.o}) to ${CITY(S.d)} (${S.d})</span><span>Aircraft: ${ac.m} · ${f.cls}</span></div><main><div class="seatw"><div class="card"><div class="chips" style="margin-bottom:14px">${tabs}</div><h3 class="f" style="text-align:center;margin:0 0 4px">${ST[sec]}</h3><div style="text-align:center;color:var(--mute);font-size:15px">${ac.car} ${ac.m} · ${ac.lbl} seats · Business ${BIZ_SEATS} (${BIZLAY.join('-')}) · Economy ${ac.lay.join('-')}</div>
+ <div class="smw"><div class="smap">${rh}</div></div>
+ <div class="banner ${biz?'g':''}">${biz?`Business fare: only ${BIZ_SEATS} Business seats on this flight (Rows 1–${ac.biz}). Economy rows are locked.`:`Economy fare: Rows 1–${ac.biz} are the ${BIZ_SEATS}-seat Business cabin and are locked.`}</div>
+ <div class="acts">${sec>0?`<button class="btn gh sm" onclick="S.sec=${sec-1};render()">← ${SN[sec-1]}</button>`:'<span></span>'}${sec<2?`<button class="btn gh sm" onclick="S.sec=${sec+1};render()">${SN[sec+1]} →</button>`:'<span></span>'}</div></div>
+ <div><div class="card"><h3 class="f">Seat Types &amp; Pricing</h3><div class="lg">${biz?'<span><i style="border-color:#eab308;background:var(--bzbg)"></i>Business (Included)</span>':'<span><i style="border-color:#5eead4;background:var(--tint)"></i>Standard (No Extra Charge)</span><span><i style="border-color:var(--or);background:#fff7ed"></i>Extra Legroom (+ ₱500)</span>'}<span><i style="border-color:var(--or);background:var(--or)"></i>Your Selection</span><span><i style="border-color:#94a3b8;background:var(--gray)"></i>Unavailable</span><span><i style="border-color:var(--line);opacity:.35"></i>Other cabin (locked)</span></div></div>
+ <div class="card" style="margin-top:24px"><h3 class="f">Selected Seat Information</h3>${pl}<div class="ln" style="margin-top:14px"><span>Seat Class Surcharge:</span><b style="color:var(--ink)">${peso(sur)} ${sur?'(Extra Legroom)':biz?'(Business, included)':'(Standard)'}</b></div></div>
+ ${(()=>{const need=S.pax-S.seats.length,m=S.msg||(need>0?`Select ${need} more seat${need>1?'s':''} to continue (${S.seats.length} of ${S.pax} selected).`:'');return m?`<div class="em" style="font-size:17px;margin-top:12px">${m}</div>`:''})()}<div class="acts"><button class="btn gh" onclick="go(2)">Change Flight</button><button class="btn cy" onclick="toPass()">Proceed to Passenger Info</button></div></div></div></main>`}
+function seat(c){const i=S.seats.indexOf(c);let m='';if(i>=0)S.seats.splice(i,1);else{S.seats.push(c);if(S.seats.length>S.pax){S.seats.shift();if(S.pax>1)m=`Only ${S.pax} seats are needed, so your earliest selection was replaced.`}}S.msg=m;render()}
+function toPass(){if(S.seats.length<S.pax){S.msg=`Please select ${S.pax} seat${S.pax>1?'s':''} to continue.`;return render()}go(4)}
+
+function pass(){ensureP();const n=S.pax,ai=S.ai=Math.min(S.ai||0,n-1),p=S.P[ai],e=S.err[ai]||{},a=age(p),nf=inf(p),P='S.P['+ai+']',ve=vErr(p,ai),gw=S.msg||groupWarn();
+const tabs=n>1?`<div class="chips" style="margin-bottom:22px">${S.P.map((q,i)=>`<button class="chip ${i==ai?'on':''}" style="${S.err[i]?'border-color:#c2410c':''}" onclick="S.ai=${i};render()">${i+1}. ${q.name.trim()?esc(q.name.trim().split(/\s+/)[0]):'Passenger'}</button>`).join('')}</div>`:'';
+const f=(o,ex,k,l,t,ph)=>{const em=(S.showAll||S.tc[ai+k]||String(o[k]).trim()!=='')?(ve[k]||''):'';return `<div class="fld"><span class="lbl">${l}</span><input class="inp ${em?'er':''}" type="${t}" value="${esc(o[k])}" placeholder="${ph||''}" ${k=='phone'?'inputmode="numeric" maxlength="11" ':''}oninput="${k=='phone'?'digits11(this);':''}${ex}.${k}=this.value;chk(${ai},'${k}',this)" onblur="chk(${ai},'${k}',this)" ${k=='dob'?'onchange="render()"':''}><div class="em" id="em_${k}">${em}</div></div>`};
+const tg=a===null||a<0?'':nf?'<div class="badge" style="margin-bottom:16px;background:#fef9c3;color:#713f12">Infant (under 2): free fare, sits on a lap, no seat or add-ons</div>':a<12?'<div class="badge" style="margin-bottom:16px">Child (2–11): adult fare applies</div>':'';
+const add=nf?`<div class="card"><h3 class="f" style="font-size:22px">Infant Travel</h3><p style="margin:0;font-size:18px;color:var(--mute)">Infants under 2 fly free with no baggage or meal add-ons. The infant sits on an accompanying passenger's lap.</p></div>`:`<div class="card"><div style="display:flex;justify-content:space-between;align-items:baseline"><h3 class="f" style="font-size:22px">Baggage Allowance</h3><span style="color:var(--mute)">Choose None for no extra baggage and no extra charge</span></div><div class="bag">${BAG.map((b,i)=>`<button class="op ${p.bag==i?'on':''}" onclick="${P}.bag=${i};render()"><b>${b.kg?b.kg+'kg':'None'}</b><span>${b.kg?'+ ₱'+b.p:'₱0'}</span></button>`).join('')}</div></div>
+<div class="card" style="margin-top:24px"><h3 class="f" style="font-size:22px">In-Flight Meal Preference</h3><div class="chips">${Object.keys(MEALS).map(m=>`<button class="chip ${p.meal==m?'on':''}" onclick="${P}.meal='${m}';render()">${m}${MEALS[m]?` (+ ₱${MEALS[m]})`:''}</button>`).join('')}</div></div>`;
+return `<main><div class="two"><div class="card"><h3 class="f" style="font-size:30px">${ai==0?'Primary Passenger':'Passenger '+(ai+1)}</h3>${tabs}${f(p,P,'name','Full Name (as in Passport/ID)','text','e.g. Maria Santos Concepcion')}
+<div class="g2"><div class="fld"><span class="lbl">Gender</span><select class="inp" onchange="${P}.gender=this.value">${['Female','Male','Prefer not to say'].map(g=>`<option ${g==p.gender?'selected':''}>${g}</option>`).join('')}</select></div>${f(p,P,'dob','Birthdate','date')}</div>${tg}
+${ai==0?`<div class="g2">${f(S.C,'S.C','phone','Contact Number','tel','09171234567')}${f(S.C,'S.C','email','Email Address','email','name@email.com')}</div>`:''}
+<div class="fld"><span class="lbl">Discount Type</span><select class="inp" ${nf?'disabled':''} style="${p.disc!='none'&&!nf?'border-color:var(--cyan);background:var(--tint);color:var(--teal);font-weight:700':''}" onchange="${P}.disc=this.value;render()">${Object.entries(DISC).map(([k,v])=>`<option value="${k}" ${k==p.disc?'selected':''}>${v[0]}</option>`).join('')}</select></div></div>
+<div>${add}${gw?`<div class="em" style="font-size:17px;margin-top:12px">${gw}</div>`:''}<div class="acts"><button class="btn gh" onclick="go(3)">Back to Seats</button><button class="btn cy" onclick="${ai<n-1?`S.ai=${ai+1};render()`:'calc()'}">${ai<n-1?'Next Passenger':'Calculate Fare'}</button></div></div></div></main>`}
+function vErr(p,i){const e={},a=age(p);if(p.name.trim().split(/\s+/).filter(Boolean).length<2)e.name='Enter full name (first and last).';if(!p.dob)e.dob='Select a birthdate.';else if(a<0)e.dob='Birthdate must be before the travel date.';else if(p.disc=='senior'&&a<60)e.dob='Senior discount requires age 60+.';if(i==0){if(!/^\d{11}$/.test(S.C.phone.trim()))e.phone='Contact number must be exactly 11 digits (e.g. 09171234567).';if(!/^\S+@\S+\.\S+$/.test(S.C.email.trim()))e.email='Enter a valid email address.'}return e}
+function chk(i,k,el){S.tc[i+k]=1;const e=vErr(S.P[i],i)[k]||'';el.classList.toggle('er',!!e);const m=$('em_'+k);if(m)m.textContent=e}
+function groupWarn(){const ni=S.P.filter(p=>inf(p)).length,na=S.pax-ni;if(!ni)return'';if(na<1)return'At least one passenger must be 2 or older.';if(ni>na)return'Each infant needs an accompanying passenger aged 2+ (max 1 infant each).';return''}
+function calc(){const E={};S.P.forEach((p,i)=>{const e=vErr(p,i);if(Object.keys(e).length)E[i]=e});
+S.err=E;S.showAll=true;S.msg='';const ni=S.P.filter(p=>inf(p)).length,na=S.pax-ni;
+if(Object.keys(E).length){S.ai=+Object.keys(E)[0];return render()}
+if(na<1)S.msg='At least one passenger must be 2 or older.';else if(ni>na)S.msg='Each infant needs an accompanying passenger aged 2+ (max 1 infant each).';
+if(S.msg)return render();go(5)}
+function summary(){const F=fare(),n=S.pax,ni=F.L.filter(x=>x.i).length,pa=n-ni,first=F.L.find(x=>!x.i),ln=(a,b,c='')=>`<div class="ln ${c}"><span>${a}</span><span>${b}</span></div>`,sn={senior:'Senior',pwd:'PWD',student:'Student'},sl=F.L.filter(x=>x.seat).map(x=>x.seat);
+return `<main><div class="two"><div class="card"><h3 class="f" style="font-size:30px">Detailed Fare Breakdown</h3>${ln(`Base Fare (${S.o} to ${S.d})${pa>1?' × '+pa:''}`,peso(F.bs))}${ni?ln(`Infant${ni>1?'s':''} under 2 × ${ni} (free)`,peso(0)):''}${ln(`Seat Class Surcharge (Seat${sl.length>1?'s':''} ${sl.join(', ')})`,peso(F.ss))}${ln(pa>1?`Baggage Add-ons (${pa} passengers)`:`Baggage Allowance Add-on (${bagLbl(first.p.bag)})`,peso(F.bg))}${ln(pa>1?`In-Flight Meals (${pa} passengers)`:`In-Flight Meal (${first.p.meal})`,peso(F.ml))}${ln('Subtotal',peso(F.sub),'b')}${F.L.filter(x=>x.ds).map(x=>ln(`${sn[x.p.disc]} Discount (${DISC[x.p.disc][1]*100}% off base fare)${n>1?' — '+esc(x.p.name.trim().split(/\s+/)[0]):''}`,'− '+peso(x.ds),'d')).join('')}<div class="tot"><span>Total Amount Due</span><b>${peso(F.tot)}</b></div></div>
+<div><div class="card rc"><h3 class="f" style="font-size:22px">Booking Details Recap</h3><div><b>Route:</b> ${CITY(S.o)} (${S.o}) to ${CITY(S.d)} (${S.d})</div><div><b>Flight:</b> ${S.flight.no} · ${S.flight.ac.m} · ${S.flight.cls}</div><div><b>Schedule:</b> ${fd(S.dep)} • ${t12(S.flight.t)}</div>${S.rt?`<div><b>Return:</b> ${fd(S.ret)}</div>`:''}${F.L.map((x,i)=>`<div><b>Passenger${n>1?' '+(i+1):''}:</b> ${esc(x.p.name)} — ${x.seat?'Seat '+x.seat:'Infant (on lap)'}</div>`).join('')}</div>
+<div class="acts"><button class="btn gh" onclick="go(4)">Change Details</button><button class="btn or" onclick="submit()">Confirm &amp; Submit ${I.chk.replace('#fff','currentColor')}</button></div></div></div></main>`}
+function newRef(){return 'SP-2026-'+String(Math.floor(100000+Math.random()*900000))}
+async function submit(){
+  if(!HAS_SB){S.msg='Supabase is not HAS_SB.';return render()}
+  if(!S.user){S.after=5;return go(9)}
+  const F=fare(), ref=newRef(), primary=S.P[0]||newP();
+  S_UPLOADING=true;render();
+  const row={
+    user_id:S.user.id, booking_reference:ref, passenger_name:primary.name.trim(), contact_email:S.C.email.trim(),
+    gender:primary.gender, birthdate:primary.dob||null, flight_id:S.flight.id,
+    route:`${S.o} → ${S.d}`, departure_date:S.dep, seat_number:S.seats.join(', '),
+    base_fare:F.bs, seating_charge:F.ss, baggage_allowance:F.bg, total_amount:F.tot,
+    status:'PENDING', payment_status:'UNPAID',
+    passengers:S.P.map(q=>({name:q.name.trim(),gender:q.gender,dob:q.dob||null,disc:q.disc,bag:q.bag,meal:q.meal,infant:inf(q,S.dep)}))
+  };
+  const {error}=await DB.from('bookings').insert(row);
+  S_UPLOADING=false;
+  if(error){
+    console.error(error);S.msg='Unable to submit the reservation. '+error.message;return render()
+  }
+  S.ref=ref;
+  S.localBooking={ref:S.ref,o:S.o,d:S.d,dep:S.dep,ret:S.ret,rt:S.rt,pax:S.pax,flight:JSON.parse(JSON.stringify(S.flight)),seats:S.seats.slice(),P:JSON.parse(JSON.stringify(S.P)),C:{...S.C},status:'Pending',total:F.tot,at:Date.now(),id:null};
+  go(6)
+}
+function done(){const F=fare(),c=S.ref;return `<main><div class="done"><div class="ring">${I.clk}</div><span class="pend">PENDING STAFF CONFIRMATION</span><h2 class="f">Flight Reservation Submitted</h2><div class="refn">Reference Number: ${c}</div>
+ <div class="note">${I.inf}<div><h4>Pay online now or at the counter</h4><p>Use <b>Pay Online Now</b> below, or show reference code <b>${c}</b> at the ticketing counter. Once payment is received, staff confirm your booking and your receipt appears in My Bookings.</p></div></div>
+ <div class="card" style="text-align:left"><h3 class="f" style="font-size:22px">Booking Summary</h3><div class="sum"><div><small>Passenger</small><b>${esc(S.P[0].name.trim()[0].toUpperCase())}. ${esc(S.P[0].name.trim().split(/\s+/).pop())}${S.pax>1?` +${S.pax-1} more`:''}</b></div><div><small>Flight</small><b>${S.flight.no} (${S.flight.ac.car})</b></div><div><small>Route</small><b>${S.o} → ${S.d}</b></div><div><small>Seat</small><b>${F.L.filter(x=>x.seat).map(x=>x.seat).join(', ')||'—'}</b></div><div><small>Amount to pay</small><b style="color:var(--or)">${peso(F.tot)}</b></div></div></div>
+ <div class="eb"><button class="btn or" onclick="S.pay=newPay('${c}');go(15)">Pay Online Now</button><button class="btn gh" onclick="S.cb='${c}';S.cmsg='';S.cok=false;go(8)">Cancel / Refund This Booking</button><button class="btn gh" onclick="go(14)">My Bookings</button><button class="btn cy" onclick="S.pax=1;reset2()">New Booking</button></div></div></main>`}
+function qr(seed){let h=0;for(const c of seed)h=(h*31+c.charCodeAt(0))>>>0;const N=25;let r='';const f=(x,y)=>(x<8&&y<8)||(x>N-9&&y<8)||(x<8&&y>N-9);
+ for(let y=0;y<N;y++)for(let x=0;x<N;x++){let on;if(f(x,y)){const lx=x<8?x:x-(N-8),ly=y<8?y:y-(N-8);on=(lx<7&&ly<7)&&(lx==0||ly==0||lx==6||ly==6||(lx>1&&lx<5&&ly>1&&ly<5))}else{h=(h*1103515245+12345)>>>0;on=(h>>>16)&1}
+  if(on)r+=`<rect x="${x*4}" y="${y*4}" width="4" height="4" fill="#0f2a3a"/>`}
+ return `<svg width="110" height="110" viewBox="0 0 100 100" role="img" aria-label="QR code">${r}</svg>`}
+function tkName(n){const t=n.trim().split(/\s+/),l=t.pop(),f=t.shift()||'';return esc((l+' / '+f+(t.length?' '+t.map(x=>x[0]+'.').join(' '):'')).toUpperCase())}
+function ticket(x,i,b,tag){const fl=b.flight,dead=DEAD.includes(b.status)||!!tag,bz=fl.cls=='Business';return `<div class="tk" style="margin-bottom:30px"><div class="top" ${bz?'style="background:var(--gold);color:#422006"':''}><span style="display:flex;gap:12px;align-items:center">${I.plane.replace(/30/g,'26')} OFFICIAL BOARDING RECEIPT${b.pax>1?` (${i+1}/${b.pax})`:''}</span><span class="ok" ${dead?'style="background:#e2e8f0;color:#475569"':''}>${tag||(dead?'CANCELLED':'PAID &amp; CONFIRMED')}</span></div><div class="bd"><div class="rt"><div><small>${CITY(b.o).toUpperCase()}</small><div class="c">${b.o}</div><div style="margin-top:8px;font-size:18px">${fd(b.dep)} • ${t12(fl.t)}</div></div><div style="text-align:center;border-top:2px dotted var(--line);padding-top:8px;min-width:150px;color:var(--mute)"><span style="color:var(--or)">✈</span><div>Flight ${fl.no}</div><div style="font-size:14px">${fl.ac.m}</div></div><div style="text-align:right"><small>${CITY(b.d).toUpperCase()}</small><div class="c">${b.d}</div><div style="margin-top:8px;font-size:18px">${CITY(b.d)} Terminal • ${arrive(fl.t)}</div></div></div><div class="dash"></div>
+<div class="inf"><div><small>Passenger Name</small><b>${tkName(x.p.name)}</b></div><div><small>Seat Number</small><b style="color:var(--or)">${b.seatText||(x.seat?x.seat+' ('+seatType(x.seat,fl)+')':'Lap infant')}</b></div><div><small>Class</small><b>${x.i?'Infant (Free)':bz?'Business':'Economy ('+(isPrem(x.seat,fl)?'Extra Legroom':'Promo')+')'}</b></div><div style="text-align:right"><small>Baggage Limit</small><b>${x.i?'—':BAG[x.p.bag].kg?BAG[x.p.bag].kg+' KG':'No extra baggage'}</b></div></div><div class="dash"></div>
+<div class="qr"><div style="display:flex;gap:22px;align-items:center">${qr(b.ref+x.p.name+i)}<div><small style="color:var(--mute)">ELECTRONIC TICKET CODE</small><div style="font-size:22px;font-weight:700;margin:4px 0">${b.ref.slice(-4)}-A${i+1}-94C</div><div style="color:var(--mute)">Ref ${b.ref} · Paid via Agency Counter Cash</div></div></div><div style="text-align:right"><small style="color:var(--mute)">${b.pax>1?'AMOUNT PAID':'TOTAL CASH PAID'}</small><div class="f" style="font-size:42px;font-weight:700;color:var(--teal)">${peso(b.total_amount!=null?b.total_amount:x.tot)}</div></div></div></div></div>`}
+function receiptText(b){const F=fare(b),fl=b.flight;return ['SKYPATH TRAVEL AGENCY - OFFICIAL RECEIPT','Reference: '+b.ref,'Status: '+b.status,'',`Flight: ${fl.no} (${fl.ac.car}, ${fl.ac.m}) - ${fl.cls}`,`Route: ${CITY(b.o)} (${b.o}) to ${CITY(b.d)} (${b.d})`,`Departure: ${fd(b.dep)} ${t12(fl.t)}   Arrival: ${arrive(fl.t)}`,'',...F.L.map((x,i)=>`Passenger ${i+1}: ${x.p.name.trim()} | Seat: ${x.seat||'Lap infant'} | Amount: ${peso(x.tot)}`),'','TOTAL PAID: '+peso(F.tot),'','Thank you for flying with SkyPath.'].join('\n')}
+function sendMail(){const b=getBK(S.view),to=$('rcpt-to').value.trim(),m=$('mailmsg');if(!/^\S+@\S+\.\S+$/.test(to)){m.style.color='#c2410c';m.textContent='Enter a valid email address.';return}m.style.color='var(--teal)';m.textContent='Opening your email app with the receipt ready to send…';location.href='mailto:'+to+'?subject='+encodeURIComponent('SkyPath Receipt '+b.ref)+'&body='+encodeURIComponent(receiptText(b))}
+function receipt(){const b=getBK(S.view);if(!b)return '<main><p>Booking not found.</p></main>';if(b.status!='Confirmed')return `<main><div class="card" style="max-width:640px;margin:40px auto;text-align:center"><h3 class="f">Receipt not available yet</h3><p style="color:var(--mute)">Your receipt is issued once staff confirm your payment.</p><button class="btn cy" onclick="go(14)">Back to My Bookings</button></div></main>`;const F=fare(b);return `<main>${F.L.map((x,i)=>ticket(x,i,b)).join('')}${b.pax>1?`<p style="text-align:center;font-size:20px;color:var(--mute)">Booking total paid: <b style="color:var(--ink)">${peso(F.tot)}</b> · ${b.pax} passengers · Ref ${b.ref}</p>`:''}
+ <div class="card noprint" style="max-width:880px;margin:0 auto 10px"><h3 class="f" style="font-size:22px">Send receipt by email</h3><div class="mrow"><input class="inp" id="rcpt-to" type="email" placeholder="name@email.com" value="${esc(b.C.email||(S.user&&S.user.email)||'')}" onkeydown="if(event.key==='Enter')sendMail()"><button class="btn cy" style="padding:16px 28px;font-size:19px" onclick="sendMail()">Send via Email</button></div><div id="mailmsg" class="em" style="font-size:16px"></div><p style="margin:8px 0 0;color:var(--mute);font-size:15px">This opens your email app with the receipt details filled in. Press Send there to deliver it.</p></div>
+ <div class="eb"><button class="btn or" onclick="window.print()">Print Receipt${b.pax>1?'s':''}</button><button class="btn gh" onclick="go(14)">Back to My Bookings</button></div></main>`}
+
+function refundInfo(b){const F=fare(b),hrs=(new Date(b.dep+'T'+b.flight.t)-Date.now())/36e5;
+ if(DEAD.includes(b.status))return{can:false,why:b.status=='Cancelled'?'This booking has already been cancelled.':'A cancellation and refund has already been processed for this booking.'};
+ if(hrs<=0)return{can:false,why:'This flight has already departed, so it can no longer be cancelled.'};
+ if(b.status=='Pending')return{can:true,free:true,paid:0,refund:0,hrs};
+ const ti=REFUND.findIndex(t=>hrs>=t.h),t=REFUND[ti];return{can:true,paid:F.tot,pct:t.p,ti,refund:Math.round(F.tot*t.p*100)/100,hrs}}
+
+async function doCancel(){
+  const b=(S.mine||[]).find(x=>x.ref==S.cb);if(!b)return;
+  if(!S.cok){S.cmsg='Please tick the box to confirm the cancellation.';return render()}
+  if(b.payment_status=='PAID'){const {data:rr,error:re}=await DB.rpc('request_refund',{p_reference:b.ref,p_reason:'Customer requested cancellation and refund'});
+   if(re){S.cmsg=re.message||'Unable to send the refund request.';return render()}
+   b.status='Refund Pending';S.cdone=`Your refund request for ${b.ref}${b.pax>1?' ('+b.pax+' passengers: '+b.P.map(q=>q.name).join(', ')+')':''} was sent to our staff. All boarding passes on this booking will be cancelled. Refund amount: ${peso((rr&&rr.amount)||0)}. Staff will release it to your original payment method once approved.`;S.cmsg='';S.cok=false;return render()}
+  if(b.status!='Pending'){S.cmsg='This booking cannot be cancelled online. Please contact the ticketing counter.';return render()}
+  const {data,error}=await DB.rpc('cancel_my_booking',{p_reference:b.ref});
+  if(error||!data){console.error(error);S.cmsg='Unable to cancel this booking. Please contact the ticketing counter.';return render()}
+  b.status='Cancelled';S.cdone=`Reservation ${b.ref}${b.pax>1?' ('+b.pax+' passengers)':''} has been cancelled. No payment was made, so nothing is owed.`;
+  S.cmsg='';S.cok=false;render()
+}
+function cancelPg(){
+ if(S.cdone)return `<main><div class="done"><div class="ring">${I.chk.replace('#fff','currentColor').replace('width="16" height="16"','width="60" height="60"')}</div><span class="pend">CANCELLATION RECORDED</span><h2 class="f">Booking Cancelled</h2><p style="font-size:21px;color:var(--mute)">${esc(S.cdone)}</p><div class="eb"><button class="btn cy" onclick="reset()">Back to Home</button></div></div></main>`;
+ const list=(S.mine||[]).filter(x=>!DEAD.includes(x.status)),b=S.cb&&list.find(x=>x.ref==S.cb),r=b&&refundInfo(b);
+ const pol=`<div class="card"><h3 class="f">Refund Policy</h3>${REFUND.map((t,i)=>`<div class="pol ${r&&r.ti===i?'on':''}"><span>${t.l}</span><b>${t.p*100}% refund</b></div>`).join('')}<p style="color:var(--mute);font-size:16px;margin:14px 0 0">Reservations that have not been paid yet can be cancelled for free. Paid bookings are cancelled by sending a refund request, which staff review and release to your original payment method.</p></div>`;
+ let det='';
+ if(b){const F=fare(b),fl=b.flight;const pc=r.can&&!r.free&&r.pct!=null?r.pct:0,sh=F.L.map(x=>Math.round(x.tot*pc*100)/100);if(pc&&sh.length){const d=Math.round((r.refund-sh.reduce((a,v)=>a+v,0))*100)/100;sh[sh.length-1]=Math.round((sh[sh.length-1]+d)*100)/100}
+  const per=b.pax>1&&r.can?`<div style="margin:14px 0"><b>Passengers affected (${b.pax})</b>${F.L.map((x,i)=>`<div class="ln"><span>${i+1}. ${esc(x.p.name)} — ${x.seat?'Seat '+x.seat:'Infant (on lap)'}</span><span>${r.free?'Cancelled · no charge':'Fare '+peso(x.tot)+' → Refund '+peso(sh[i])}</span></div>`).join('')}</div>`:'';
+  const tix=b.pax>1?`<div style="margin-top:26px"><h3 class="f" style="font-size:22px">Boarding passes to be cancelled (${b.pax})</h3>${F.L.map((x,i)=>ticket(x,i,b,'TO BE CANCELLED')).join('')}</div>`:'';
+  det=`<div class="card" style="margin-top:30px"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px"><h3 class="f" style="margin:0">Booking ${b.ref}</h3><span class="st ${b.status.replace(' ','')}">${b.status.toUpperCase()}</span></div>
+ <div class="rc" style="margin:14px 0"><div><b>Flight:</b> ${fl.no} · ${fl.ac.m} · ${fl.cls}</div><div><b>Route:</b> ${CITY(b.o)} (${b.o}) to ${CITY(b.d)} (${b.d})</div><div><b>Departure:</b> ${fd(b.dep)} • ${t12(fl.t)}</div>${F.L.map((x,i)=>`<div><b>Passenger${b.pax>1?' '+(i+1):''}:</b> ${esc(x.p.name)} — ${x.seat?'Seat '+x.seat:'Infant (on lap)'}</div>`).join('')}</div>
+ <div class="ln"><span>Total fare</span><span>${peso(F.tot)}</span></div>
+ ${per}
+ ${!r.can?`<div class="note" style="margin:16px 0 0"><div><p>${r.why}</p></div></div>`:r.free?`<div class="ln d"><span>Not yet paid · cancellation fee</span><span>${peso(0)}</span></div>`:`<div class="ln"><span>Refund rate (${REFUND[r.ti].l})</span><span>${r.pct*100}%</span></div><div class="ln"><span>Cancellation fee</span><span>− ${peso(F.tot-r.refund)}</span></div><div class="tot"><span>Refund Amount</span><b>${peso(r.refund)}</b></div>`}
+ ${r.can?`<label style="display:flex;gap:12px;align-items:center;font-size:18px;margin-top:22px"><input type="checkbox" style="width:22px;height:22px" ${S.cok?'checked':''} onchange="S.cok=this.checked"> I understand this cancellation cannot be undone.</label><div class="acts"><button class="btn gh" onclick="S.cb=null;render()">Keep Booking</button><button class="btn rd" onclick="doCancel()">${b.payment_status=='PAID'?'Request Refund':'Cancel This Booking'}</button></div>`:''}${tix}</div>`}
+ return `<main><div style="margin-bottom:22px"><button class="btn gh sm" onclick="go(S.back==6?6:S.back==14?14:0)">← Back</button></div><div class="two"><div class="card"><h3 class="f" style="font-size:30px">Your Bookings</h3>${list.length?list.map(x=>`<button class="op ${S.cb==x.ref?'on':''}" style="width:100%;margin-bottom:12px;text-align:left" onclick="S.cb='${x.ref}';S.cok=false;S.cmsg='';render()"><b>${x.ref}</b><span>${x.o} → ${x.d} · ${fd(x.dep)} · ${x.pax>1?x.pax+' passengers · ':''}${x.status}</span></button>`).join(''):'<p style="color:var(--mute);font-size:19px;margin:0">You have no active bookings to cancel.</p>'}${S.cmsg?`<div class="em" style="font-size:17px;margin-top:12px">${S.cmsg}</div>`:''}</div>${pol}</div>${det}</main>`}
+
+
+
+
+function viewR(r){const b=(S.mine||[]).find(x=>x.ref==r);if(!b)return;S.localBooking=b;S.view=r;go(7)}
+function reset2(){const u=S.user;reset();S.user=u;render()}
+
+/* ===== Accounts (Supabase Auth) ===== */
+const ST={PENDING:'Pending',CONFIRMED:'Confirmed',CANCELLED:'Cancelled',REFUND_PENDING:'Refund Pending',REFUNDED:'Refunded'};
+function toBk(b,fm){const seats=String(b.seat_number||'').split(',').map(x=>x.trim()).filter(Boolean);let st=ST[b.status]||b.status;if(st=='Pending'&&b.payment_status=='PAID')st='Paid';if(b.payment_status=='REFUNDED')st='Refunded';else if(b.status=='CANCELLED'&&b.payment_status=='PAID')st='Refund Pending';
+ const PS=Array.isArray(b.passengers)&&b.passengers.length?b.passengers.map(q=>({name:q.name,gender:q.gender||'Female',dob:q.dob||'',disc:q.disc||'none',bag:Math.min(Math.max(0,Number(q.bag)||0),BAG.length-1),meal:MEALS[q.meal]!=null?q.meal:'Standard'})):[[{name:b.passenger_name,gender:b.gender||'Female',dob:b.birthdate||'',disc:'none',bag:Math.max(0,BAG.findIndex(x=>x.p==Number(b.baggage_allowance||0))),meal:'Standard'}]];
+ return{id:b.id,ref:b.booking_reference,o:fm.origin,d:fm.destination,dep:b.departure_date,pax:PS.length,flight:fm,seats,seatText:seats.length>1?seats.join(', '):'',created:b.created_at||'',
+  P:PS,C:{phone:'',email:b.contact_email||''},status:st,total:Number(b.total_amount||0),total_amount:Number(b.total_amount||0),payment_status:b.payment_status}}
+async function loadMine(){S.mine=[];if(!HAS_SB||!S.user)return;
+ const {data,error}=await DB.from('bookings').select('*').eq('user_id',S.user.id);
+ if(error){console.error(error);S.msg='Unable to load your bookings: '+error.message;return}
+ const rq=await DB.from('refund_requests').select('booking_id').eq('status','PENDING'),openR=new Set((rq.data||[]).map(x=>x.booking_id));
+ const ids=[...new Set((data||[]).map(b=>b.flight_id))],fm={};
+ if(ids.length){const r=await DB.from('flights').select('*').in('id',ids);(r.data||[]).forEach(f=>fm[f.id]=mapFlight(f))}
+ S.mine=(data||[]).filter(b=>fm[b.flight_id]).map(b=>{const k=toBk(b,fm[b.flight_id]);if(openR.has(b.id)&&k.status!='Refunded')k.status='Refund Pending';return k}).sort((a,b)=>String(b.created).localeCompare(String(a.created))||String(b.dep).localeCompare(String(a.dep)))}
+const PWMSG='Use at least 8 characters with at least one letter and one number.',PWOK=v=>v.length>=8&&/[A-Za-z]/.test(v)&&/\d/.test(v);
+const AE={name:v=>v.trim().split(/\s+/).filter(Boolean).length<2?'Enter your full name (first and last).':'',
+ email:v=>/^\S+@\S+\.\S+$/.test(v.trim())?'':'Enter a valid email address.',
+ phone:v=>/^\d{11}$/.test(v.trim())?'':'Contact number must be exactly 11 digits (e.g. 09171234567).',
+ pw:v=>PWOK(v)?'':PWMSG,pw2:v=>v===S.au.pw?'':'Passwords do not match.',lpw:v=>v?'':'Enter your password.',
+ np:v=>PWOK(v)?'':PWMSG,np2:v=>v===S.au.np?'':'Passwords do not match.',
+ code:v=>/^\d{6,8}$/.test(v.trim())?'':'Enter the code from your email (6 to 8 digits).'};
+function achk(k){S.tc['a_'+k]=1;const e=AE[k](S.au[k]),i=$('ai_'+k),m=$('aem_'+k);if(i)i.classList.toggle('er',!!e);if(m)m.textContent=e;
+ const k2=k=='pw'?'pw2':k=='np'?'np2':'';if(k2&&(S.tc['a_'+k2]||S.au[k2])){const e2=AE[k2](S.au[k2]),i2=$('ai_'+k2),m2=$('aem_'+k2);if(i2)i2.classList.toggle('er',!!e2);if(m2)m2.textContent=e2}}
+const af=(k,l,t,ph,ac)=>{const v=S.au[k],em=(S.showA||S.tc['a_'+k]||String(v).trim()!=='')?AE[k](v):'';return `<div class="fld"><span class="lbl">${l}</span><input id="ai_${k}" class="inp ${em?'er':''}" type="${t}" value="${esc(v)}" placeholder="${ph||''}" autocomplete="${ac||'off'}" ${k=='phone'?'inputmode="numeric" maxlength="11" ':''}oninput="${k=='phone'?'digits11(this);':''}S.au.${k}=this.value;achk('${k}')" onblur="achk('${k}')" onkeydown="if(event.key==='Enter')submitAuth()"><div class="em" id="aem_${k}">${em}</div></div>`};
+const pwt=()=>S.showPw?'text':'password';
+const showPwBox=()=>`<label style="display:flex;gap:10px;align-items:center;font-size:17px;margin:-6px 0 18px;color:var(--mute)"><input type="checkbox" style="width:20px;height:20px" ${S.showPw?'checked':''} onchange="S.showPw=this.checked;render()"> Show password</label>`;
+const amsg=()=>(S.msg?`<div class="em" style="font-size:17px;margin-bottom:12px">${S.msg}</div>`:'')+(S.note?`<div style="color:var(--teal);font-size:17px;margin-bottom:12px">${esc(S.note)}</div>`:'');
+const authBad=ks=>{ks.forEach(k=>S.tc['a_'+k]=1);S.showA=true;return ks.some(k=>AE[k](S.au[k]))};
+const lnk=(t,n)=>`<a style="color:var(--teal);text-decoration:underline;cursor:pointer" onclick="go(${n})">${t}</a>`;
+const wrap=h=>`<main><div class="card" style="max-width:600px;margin:30px auto">${h}</div></main>`;
+const btnT=t=>S.busy?'Please wait…':t;
+function submitAuth(){({9:doLogin,10:doRegister,11:doVerify,12:doForgot,13:doReset})[S.step]?.()}
+function loginPg(){return wrap(`<h3 class="f" style="font-size:30px">Log In</h3><p style="color:var(--mute);margin-top:0">Log in to book flights and manage your reservations.</p>${af('email','Email Address','email','name@email.com','email')}${af('lpw','Password',pwt(),'','current-password')}${showPwBox()}${amsg()}<button class="btn cy" style="width:100%" onclick="doLogin()">${btnT('Log In')}</button><p style="text-align:center;font-size:18px;margin:18px 0 4px">${lnk('Forgot your password?',12)}</p><p style="text-align:center;font-size:18px;margin:0">New here? ${lnk('Create an account',10)}</p>`)}
+function registerPg(){return wrap(`<h3 class="f" style="font-size:30px">Create Your Account</h3><p style="color:var(--mute);margin-top:0">We will email you a code to verify your address.</p>${af('name','Full Name','text','e.g. Maria Santos Concepcion','name')}${af('email','Email Address','email','name@email.com','email')}${af('phone','Contact Number','tel','09171234567','tel')}${af('pw','Password',pwt(),'At least 8 characters','new-password')}${af('pw2','Confirm Password',pwt(),'','new-password')}${showPwBox()}${amsg()}<button class="btn cy" style="width:100%" onclick="doRegister()">${btnT('Create Account')}</button><p style="text-align:center;font-size:18px;margin:18px 0 0">Already have an account? ${lnk('Log in',9)}</p>`)}
+function verifyPg(){const rec=S.vType=='recovery';return wrap(`<h3 class="f" style="font-size:30px">Verify Your Email</h3><p style="color:var(--mute);margin-top:0">${rec?'Enter the reset code':'Enter the verification code'} we sent to <b style="color:var(--ink)">${esc(S.vEmail)}</b>.</p>${af('code','Verification Code','text','123456','one-time-code')}${amsg()}<button class="btn cy" style="width:100%" onclick="doVerify()">${btnT('Verify')}</button><p style="text-align:center;font-size:18px;margin:18px 0 4px"><a style="color:var(--teal);text-decoration:underline;cursor:pointer" onclick="resendCode()">Send a new code</a></p><p style="text-align:center;font-size:18px;margin:0">${lnk('Back to log in',9)}</p>`)}
+function forgotPg(){return wrap(`<h3 class="f" style="font-size:30px">Reset Password</h3><p style="color:var(--mute);margin-top:0">Enter your account email and we will send you a reset code.</p>${af('email','Email Address','email','name@email.com','email')}${amsg()}<button class="btn cy" style="width:100%" onclick="doForgot()">${btnT('Send Reset Code')}</button><p style="text-align:center;font-size:18px;margin:18px 0 0">${lnk('Back to log in',9)}</p>`)}
+function resetPg(){return wrap(`<h3 class="f" style="font-size:30px">Choose a New Password</h3>${af('np','New Password',pwt(),'At least 8 characters','new-password')}${af('np2','Confirm New Password',pwt(),'','new-password')}${showPwBox()}${amsg()}<button class="btn cy" style="width:100%" onclick="doReset()">${btnT('Save New Password')}</button>`)}
+const needCfg=()=>{if(HAS_SB)return false;S.msg='Supabase is not HAS_SB. Check the Admin js/supabase-config.js file.';render();return true};
+async function isCustomer(u){const {data:pr}=await DB.from('profiles').select('role').eq('id',u.id).maybeSingle();if(pr&&pr.role==='customer')return true;await DB.auth.signOut();S.user=null;return false}
+async function afterLogin(){const t=S.after||0;S.after=0;S.au=emptyAu();await go(t)}
+async function doLogin(){if(S.busy||needCfg())return;if(authBad(['email','lpw']))return render();S.busy=true;S.msg='';render();
+ const email=S.au.email.trim(),{data,error}=await DB.auth.signInWithPassword({email,password:S.au.lpw});S.busy=false;
+ if(error){if(/not confirmed/i.test(error.message)){S.vEmail=email;S.vType='signup';await DB.auth.resend({type:'signup',email});S.resendAt=Date.now()+60000;return go(11,'Your email is not verified yet. We sent you a new code.')}S.msg='Incorrect email or password.';return render()}
+ if(!await isCustomer(data.user)){S.msg='This is a staff account. Please sign in through the SkyPath staff portal.';return render()}
+ S.user=data.user;await afterLogin()}
+async function doRegister(){if(S.busy||needCfg())return;if(authBad(['name','email','phone','pw','pw2']))return render();S.busy=true;S.msg='';render();
+ const email=S.au.email.trim(),{data,error}=await DB.auth.signUp({email,password:S.au.pw,options:{data:{full_name:S.au.name.trim(),phone:S.au.phone.trim()}}});S.busy=false;
+ if(error){S.msg=/registered|exists/i.test(error.message)?'An account with this email already exists. Please log in.':error.message;return render()}
+ if(data.user&&data.user.identities&&data.user.identities.length===0){S.msg='An account with this email already exists. Please log in.';return render()}
+ if(data.session){S.user=data.user;return afterLogin()}
+ S.vEmail=email;S.vType='signup';S.resendAt=Date.now()+60000;S.au.code='';go(11,'We sent a verification code to '+email+'.')}
+async function doVerify(){if(S.busy||needCfg())return;if(authBad(['code']))return render();S.busy=true;S.msg='';render();
+ const {data,error}=await DB.auth.verifyOtp({email:S.vEmail,token:S.au.code.trim(),type:S.vType});S.busy=false;
+ if(error){S.msg='That code is invalid or has expired. Check the code or request a new one.';return render()}
+ S.user=data.user||(data.session&&data.session.user);if(S.vType=='recovery'){S.au.code='';return go(13)}await afterLogin()}
+async function resendCode(){if(Date.now()<S.resendAt){S.msg=`Please wait ${Math.ceil((S.resendAt-Date.now())/1000)} seconds before requesting another code.`;S.note='';return render()}
+ const r=S.vType=='signup'?await DB.auth.resend({type:'signup',email:S.vEmail}):await DB.auth.resetPasswordForEmail(S.vEmail);
+ if(r.error){S.msg=r.error.message;S.note=''}else{S.resendAt=Date.now()+60000;S.msg='';S.note='A new code was sent to '+S.vEmail+'.'}render()}
+async function doForgot(){if(S.busy||needCfg())return;if(authBad(['email']))return render();S.busy=true;S.msg='';render();
+ const email=S.au.email.trim(),{error}=await DB.auth.resetPasswordForEmail(email);S.busy=false;
+ if(error){S.msg=error.message;return render()}
+ S.vEmail=email;S.vType='recovery';S.resendAt=Date.now()+60000;S.au.code='';go(11,'If an account exists for '+email+', we sent a reset code to it.')}
+async function doReset(){if(S.busy||needCfg())return;if(authBad(['np','np2']))return render();S.busy=true;S.msg='';render();
+ const {error}=await DB.auth.updateUser({password:S.au.np});S.busy=false;
+ if(error){S.msg=error.message;return render()}
+ const {data}=await DB.auth.getUser();S.user=data.user;await afterLogin()}
+async function logout(){await DB.auth.signOut();S.user=null;S.mine=[];reset()}
+function myBookings(){const L=S.mine||[];return `<main><div class="card"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:6px"><h3 class="f" style="margin:0">My Bookings</h3><div style="display:flex;gap:10px"><button class="btn or sm" onclick="go(1)">Book a Flight</button><button class="btn gh sm" onclick="logout()">Log Out</button></div></div>${S.msg?`<div class="em" style="font-size:17px">${S.msg}</div>`:''}
+ ${L.length?L.map(b=>`<div class="card" style="margin-top:16px"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center"><div><div class="f" style="font-size:24px;font-weight:700">${b.ref}</div><div style="color:var(--mute)">${b.flight.no} · ${CITY(b.o)} (${b.o}) → ${CITY(b.d)} (${b.d}) · ${fd(b.dep)} · ${t12(b.flight.t)}</div><div style="color:var(--mute)">Seats: ${b.seats.join(', ')||'—'} · ${peso(b.total)}</div></div><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="st ${b.status.replace(' ','')}">${b.status.toUpperCase()}</span>${b.status=='Confirmed'?`<button class="btn cy sm" onclick="viewR('${b.ref}')">View Receipt</button>`:b.status=='Pending'?`<button class="btn or sm" onclick="S.pay=newPay('${b.ref}');go(15)">Pay Now</button>`:b.status=='Paid'?'<span style="color:var(--mute);font-size:15px">Payment received · awaiting staff confirmation</span>':''}${DEAD.includes(b.status)?'':`<button class="btn gh sm" onclick="S.cb='${b.ref}';S.cok=false;S.cmsg='';go(8)">Cancel / Refund</button>`}</div></div></div>`).join(''):'<p style="color:var(--mute);font-size:19px">You have no bookings yet.</p>'}</div></main>`}
+
+/* ===== Online payment (DEMO: no real money moves) ===== */
+const newPay=ref=>({ref,method:'',phone:'',card:'',exp:'',cvc:'',cname:'',phase:'choose',otp:'',show:false,payRef:''});
+const PM={gcash:['GCash','E-wallet'],maya:['Maya','E-wallet'],card:['Card','Credit / Debit']};
+const PE={phone:v=>/^09\d{9}$/.test(v.replace(/[\s-]/g,'').replace(/^\+63/,'0'))?'':'Enter your 11-digit mobile number (09XXXXXXXXX).',
+ card:v=>/^\d{16}$/.test(v.replace(/[\s-]/g,''))?'':'Enter a 16-digit card number.',
+ exp:v=>{const m=v.trim().match(/^(0[1-9]|1[0-2])\/(\d{2})$/);if(!m)return'Enter a valid expiry (MM/YY).';const d=new Date();return (2000+ +m[2])*12+ +m[1]>=d.getFullYear()*12+d.getMonth()+1?'':'This card has expired.'},
+ cvc:v=>/^\d{3,4}$/.test(v.trim())?'':'Enter the 3 or 4 digit security code.',
+ cname:v=>v.trim().split(/\s+/).filter(Boolean).length<2?'Enter the name on the card.':''};
+const pfields=()=>S.pay.method=='card'?['card','exp','cvc','cname']:S.pay.method?['phone']:[];
+function pchk(k){S.tc['p_'+k]=1;const e=PE[k](S.pay[k]),i=$('pi_'+k),m=$('pem_'+k);if(i)i.classList.toggle('er',!!e);if(m)m.textContent=e}
+const pf=(k,l,ph,max,mode)=>{const v=S.pay[k],em=(S.pay.show||S.tc['p_'+k]||String(v).trim()!=='')?PE[k](v):'';return `<div class="fld"><span class="lbl">${l}</span><input id="pi_${k}" class="inp ${em?'er':''}" value="${esc(v)}" placeholder="${ph}" maxlength="${max}" inputmode="${mode||'text'}" autocomplete="off" oninput="S.pay.${k}=this.value;pchk('${k}')" onblur="pchk('${k}')"><div class="em" id="pem_${k}">${em}</div></div>`};
+function payBk(){const r=S.pay&&S.pay.ref;return (S.mine||[]).find(x=>x.ref==r)||(S.localBooking&&S.localBooking.ref==r?S.localBooking:null)}
+function payNext(){const p=S.pay;if(!p.method){S.msg='Choose a payment method.';return render()}p.show=true;if(pfields().some(k=>PE[k](p[k])))return render();p.phase='otp';p.otp='';S.msg='';render()}
+async function payConfirm(){const p=S.pay,b=payBk();if(!b||S.busy)return;
+ if(!/^\d{6}$/.test(p.otp)){S.msg='Enter the 6-digit code.';return render()}
+ if(p.otp!=='123456'){S.msg='Incorrect code. (Demo code: 123456)';return render()}
+ S.busy=true;S.msg='';render();
+ const {data,error}=await DB.rpc('demo_pay_booking',{p_reference:b.ref,p_method:p.method});S.busy=false;
+ if(error||!data||!data.ok){console.error(error);S.msg=error&&error.message&&error.message.length<90?error.message:'Payment could not be completed. Please try again or pay at the counter.';return render()}
+ p.phase='done';p.payRef=data.payment_ref;await loadMine();render()}
+function payPg(){const p=S.pay,b=payBk();
+ if(!p||!b)return wrap(`<h3 class="f">Online Payment</h3><p style="color:var(--mute)">We couldn't find that booking.</p><button class="btn cy" onclick="go(14)">My Bookings</button>`);
+ const sumry=`<div class="rc" style="margin-bottom:14px"><div><b>Booking:</b> ${b.ref}</div><div><b>Flight:</b> ${b.flight.no} · ${b.o} → ${b.d} · ${fd(b.dep)}</div></div><div class="tot" style="margin:0 0 20px"><span>Amount to pay</span><b>${peso(b.total)}</b></div>`;
+ const demo='<div class="banner g" style="margin:0 0 18px">DEMO MODE: no real money is charged. Use any details. The one-time code is 123456.</div>';
+ const err=S.msg?`<div class="em" style="font-size:17px;margin-bottom:12px">${S.msg}</div>`:'';
+ if(p.phase=='done')return wrap(`<div class="done"><div class="ring">${I.chk.replace('#fff','currentColor').replace('width="16" height="16"','width="60" height="60"')}</div><span class="pend">PAYMENT RECEIVED (DEMO)</span><h2 class="f" style="font-size:36px">Thank you!</h2><p style="color:var(--mute);font-size:19px">Reference ${b.ref} · ${peso(b.total)} via ${PM[p.method][0]}<br>Payment ref ${esc(p.payRef)}</p><div class="note">${I.inf}<div><h4>Staff have been notified</h4><p>Our staff and admin team received your payment notification. Once they confirm it, your receipt will be ready in My Bookings.</p></div></div><div class="eb"><button class="btn cy" onclick="go(14)">My Bookings</button><button class="btn gh" onclick="reset2()">Home</button></div></div>`);
+ if(b.status!='Pending')return wrap(`<h3 class="f">Online Payment</h3><p style="color:var(--mute);font-size:19px">${b.status=='Paid'?'This booking is already paid and is waiting for staff confirmation.':'This booking cannot be paid online.'}</p><button class="btn cy" onclick="go(14)">My Bookings</button>`);
+ if(p.phase=='otp'){const w=p.method!='card';return wrap(`<h3 class="f" style="font-size:28px">Authenticate Payment</h3>${demo}${sumry}<p style="font-size:18px;color:var(--mute)">${w?`Approve this payment in your ${PM[p.method][0]} app. Enter the 6-digit one-time code sent to <b style="color:var(--ink)">${esc(p.phone)}</b>.`:'Your bank sent a 6-digit one-time code to confirm this card payment (3-D Secure).'}</p><div class="fld"><span class="lbl">One-Time Code</span><input class="inp" inputmode="numeric" maxlength="6" placeholder="123456" value="${esc(p.otp)}" oninput="S.pay.otp=this.value" onkeydown="if(event.key==='Enter')payConfirm()"></div>${err}<div class="acts"><button class="btn gh" onclick="S.pay.phase='choose';S.msg='';render()">Back</button><button class="btn or" onclick="payConfirm()">${S.busy?'Processing…':'Pay '+peso(b.total)}</button></div>`)}
+ const fields=p.method=='card'?pf('card','Card Number','4242 4242 4242 4242',19,'numeric')+`<div class="g2">${pf('exp','Expiry (MM/YY)','12/29',5)}${pf('cvc','Security Code','123',4,'numeric')}</div>`+pf('cname','Name on Card','Maria Santos',40):p.method?pf('phone',PM[p.method][0]+' Mobile Number','09171234567',13,'tel'):'';
+ return wrap(`<h3 class="f" style="font-size:28px">Pay Online</h3>${demo}${sumry}<span class="lbl">Payment Method</span><div class="bag" style="margin-bottom:18px">${Object.keys(PM).map(m=>`<button class="op ${p.method==m?'on':''}" onclick="S.pay.method='${m}';S.pay.show=false;S.msg='';render()"><b>${PM[m][0]}</b><span>${PM[m][1]}</span></button>`).join('')}</div>${fields}${err}<div class="acts"><button class="btn gh" onclick="go(14)">Pay Later</button><button class="btn or" onclick="payNext()">Continue</button></div>`)}
+function render(){const v=[landing,search,select,seats,pass,summary,done,receipt,cancelPg,loginPg,registerPg,verifyPg,forgotPg,resetPg,myBookings,payPg][S.step]();$('app').innerHTML=(HAS_SB?'':'<div style="background:#f97316;color:#fff;padding:12px 24px;text-align:center;font-weight:700">Supabase is not connected, so nothing can be loaded or saved yet. Paste your Project URL and anon key at the top of this file (SB_URL and SB_KEY) and check your internet connection.</div>')+(S.step==0?'':header())+v}
+if(HAS_SB){DB.auth.getSession().then(async({data})=>{const u=(data.session&&data.session.user)||null;S.user=u&&await isCustomer(u)?u:null;if(S.step===0)render()});DB.auth.onAuthStateChange((ev,s)=>{if(ev==='SIGNED_OUT')S.user=null;else if(s&&s.user&&!S.user)S.user=s.user;if(S.step===0)render()})}
+try{render()}catch(e){console.error(e);document.getElementById('app').innerHTML='<pre style="padding:24px;white-space:pre-wrap">SkyPath failed to start:\n'+e+'</pre>'}
+
+</script></body></html>
